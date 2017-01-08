@@ -19,13 +19,43 @@ Docker-Image to run unix tools like vim, sed, curl, wget a.s.o.
 
 ### Usage
 
-Put an alias in your `~/.bash_profile` or `~/.bashrc`.
+On macOS put an alias in your `~/.bash_profile` or `~/.bashrc`.
 
 ```
-alias vim='docker run --rm -it -v $(pwd):/app/ codeclou/docker-unix-tools:latest vim'
+function vim2 {
+    DIR=$(dirname "$1")
+    FILE=$(basename "$1")
+    docker run --rm -it -v $DIR:/app/ codeclou/docker-unix-tools:latest vim /app/$FILE
+}
+export -f vim2
 ```
 
-Then use vim as you normally would, but it will be run from docker.
+Then use `vim2` as you normally would, but it will be run from docker.
+
+-----
+
+Of is you want to use `curl` do
+
+
+```
+docker run --rm -it codeclou/docker-unix-tools:latest curl -I https://codeclou.io
+```
+
+-----
+
+Or play around with `bash`.
+
+```
+docker run --rm -it -v $(pwd):/app/ codeclou/docker-unix-tools:latest bash
+```
+
+-----
+
+Windows: 
+
+ * http://stackoverflow.com/questions/24914589/how-to-create-permanent-powershell-aliases
+ * https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.utility/set-alias
+ * https://technet.microsoft.com/de-de/library/ee176913.aspx
 
 
 -----
