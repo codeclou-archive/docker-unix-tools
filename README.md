@@ -34,7 +34,7 @@ Then use `vim2` as you normally would, but it will be run from docker.
 
 -----
 
-Of is you want to use `curl` do
+Or if you want to use `curl` do
 
 
 ```
