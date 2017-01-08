@@ -9,14 +9,13 @@ RUN apk add --no-cache \
             curl \
             vim \
             grep \
-            sed \
-            awk
+            sed
 
 #
 # PREPARE USER MODE
 #
 RUN addgroup -g 10777 worker && \
-    adduser -D -G rubyworker -u 10777 worker && \
+    adduser -D -G worker -u 10777 worker && \
     mkdir -p /app/ && chown -R worker:worker /app/
 
 #
